@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+/* ── Flux theme (same palette the vanilla UI used) ─────────────────────── */
+@theme {
+  --color-bg: #0b0e14;
+  --color-raised: #12161f;
+  --color-hover: #1a2029;
+  --color-edge: #232a36;
+  --color-ink: #e8ecf3;
+  --color-dim: #8b94a7;
+  --color-accent: #5b8cff;
+  --color-movie: #3f7dff;
+  --color-series: #b45bff;
+  --color-gold: #f5c518;
+  --font-sans: "Segoe UI", "Segoe UI Variable", system-ui, -apple-system, sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+/* Frameless-window drag regions (topbar) */
+.app-drag {
+  -webkit-app-region: drag;
+}
+.app-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Dark scrollbars (main content + horizontal card rows) */
+.scroll-dark {
+  scrollbar-width: thin;
+  scrollbar-color: #2a3342 transparent;
+}
+.scroll-dark::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+.scroll-dark::-webkit-scrollbar-thumb {
+  background: #2a3342;
+  border-radius: 8px;
+}
+.scroll-dark::-webkit-scrollbar-thumb:hover {
+  background: #39455a;
+}
+.scroll-dark::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-dark::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Seek slider (player controls) */
+.seek {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+  cursor: pointer;
+}
+.seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #5b8cff;
+  border: none;
+  box-shadow: 0 0 6px rgba(91, 140, 255, 0.6);
+}
+.seek::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #5b8cff;
+  border: none;
+}
+
+/* Home skeleton shimmer */
+@keyframes flux-shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, #141a24 25%, #1c2432 50%, #141a24 75%);
+  background-size: 800px 100%;
+  animation: flux-shimmer 1.4s infinite linear;
+  border-radius: 12px;
+}
+
+/* Netflix-style Top 10 rank badge */
+.rank-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 15px;
+  font-weight: 800;
+  font-style: italic;
+  color: #fff;
+  background: rgba(229, 9, 20, 0.92);
+  padding: 0 7px;
+  border-radius: 6px;
+  line-height: 22px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Embed webview fills the player stage */
+.player-webview {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #000;
+}
+
+/* Spinners */
+@keyframes flux-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(91, 140, 255, 0.2);
+  border-top-color: #5b8cff;
+  border-radius: 50%;
+  animation: flux-spin 0.9s linear infinite;
+}
+.spinner-lg {
+  width: 56px;
+  height: 56px;
+}
+.psm-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: #5b8cff;
+  border-radius: 50%;
+  animation: flux-spin 0.8s linear infinite;
+}
+
+/* Hero bottom shade (home + details) */
+.hero-shade {
+  background: linear-gradient(
+    180deg,
+    rgba(11, 14, 20, 0) 0%,
+    rgba(11, 14, 20, 0.55) 55%,
+    rgba(11, 14, 20, 0.96) 100%
+  );
+}
+
+/* ── Home carousel rows: arrows replace the horizontal scrollbar ───────── */
+.row-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.row-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.row-arrow {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-dim);
+  background: var(--color-raised);
+  border: 1px solid var(--color-edge);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+}
+.row-arrow:hover:not(:disabled) {
+  color: #fff;
+  border-color: var(--color-accent);
+  background: rgba(91, 140, 255, 0.16);
+}
+.row-arrow:disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Continue-watching card: S/E badge + remove button */
+.cw-badge {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  max-width: calc(100% - 16px);
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  color: #fff;
+  background: rgba(9, 12, 18, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 7px;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-x {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #cfd6e0;
+  background: rgba(9, 12, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.85;
+  padding: 0;
+}
+.card-x:hover {
+  color: #fff;
+  background: #e5484d;
+  border-color: #e5484d;
+  opacity: 1;
+}
+
+/* Watched tab: search result rows */
+.watched-hit + .watched-hit {
+  border-top: 1px solid var(--color-edge);
+}

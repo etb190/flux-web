@@ -1,0 +1,27 @@
+{
+  "name": "flux-web",
+  "version": "0.13.0",
+  "description": "Flux - streaming app (React + Vite + Express)",
+  "private": true,
+  "author": "etb190",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k -n server,web -c blue,green \"node server/index.js\" \"vite\"",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "preview": "npm run build && npm start"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "hls.js": "^1.7.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.8",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "tailwindcss": "^4.1.8",
+    "vite": "^5.4.11"
+  }
+}
