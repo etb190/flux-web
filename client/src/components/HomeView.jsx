@@ -216,11 +216,12 @@ function SuggestionCard({ item, onOpen }) {
   }, [item, onOpen]);
 
   return (
-    <div className="w-[150px] shrink-0 snap-start">
+    <div className="home-card w-[150px] shrink-0 snap-start">
       <PosterCard
         item={{
           id: item.tmdbId, type: item.tmdbType, name: item.name,
-          poster: item.poster, year: item.year, imdbRating: item.imdbRating
+          poster: item.poster, year: item.year, imdbRating: item.imdbRating,
+          landscape: true
         }}
         onClick={open}
       />
@@ -355,8 +356,8 @@ function HomeBody({ data, onOpen, active }) {
         row.items && row.items.length ? (
           <CarouselRow key={row.key || ri} title={row.title}>
             {row.items.map((item, ii) => (
-              <div key={ii} className="w-[150px] shrink-0 snap-start">
-                <PosterCard item={item} onClick={() => onOpen(item)} />
+              <div key={ii} className="home-card w-[150px] shrink-0 snap-start">
+                <PosterCard item={{ ...item, landscape: true }} onClick={() => onOpen(item)} />
               </div>
             ))}
           </CarouselRow>
@@ -376,9 +377,9 @@ function HomeBody({ data, onOpen, active }) {
 export default function HomeView({ home, onOpen, onOpenSettings, tab, onTab }) {
   const feedActive = tab === 'feed';
   return (
-    <div className="flex min-h-full items-stretch">
+    <div className="home-dashboard flex min-h-full items-stretch">
       <Sidebar tab={tab} onTab={onTab} />
-      <div className="flex-1 min-w-0 px-8 pt-4 pb-2">
+      <div className="home-feed flex-1 min-w-0 px-8 pt-4 pb-2">
         {tab === 'watched' ? (
           <WatchedView onOpen={onOpen} />
         ) : home.status === 'loading' || home.status === 'idle' ? (

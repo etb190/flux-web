@@ -7,8 +7,8 @@ export default function TopBar({ query, onQueryChange, onEnter, onClear, onOpenS
     <header className="app-drag flex items-center gap-6 bg-raised border-b border-edge px-6 py-3.5 shrink-0 z-10">
       <div className="flex items-center gap-2.5 select-none">
         <img src="./icon.png" alt="" className="w-[30px] h-[30px] rounded-lg" />
-        <span className="text-[19px] font-bold tracking-wide bg-gradient-to-r from-[#8fb4ff] to-accent bg-clip-text text-transparent">
-          Flux
+        <span className="text-[19px] font-black tracking-tight text-[#e50914]">
+          FLUX
         </span>
       </div>
 

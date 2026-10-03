@@ -167,6 +167,59 @@ body {
   );
 }
 
+/* ── Netflix-inspired home dashboard ──────────────────────────────────── */
+.home-dashboard {
+  background: radial-gradient(circle at 72% 0%, rgba(20, 73, 78, 0.24), transparent 34%), #10131c;
+}
+.home-dashboard aside {
+  width: 172px;
+  background: rgba(12, 15, 23, 0.96);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.home-dashboard aside button {
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.home-dashboard aside button:first-child {
+  border-left: 2px solid #e50914;
+}
+.home-feed {
+  background: linear-gradient(180deg, rgba(28, 37, 53, 0.22), transparent 36%);
+}
+.home-feed section {
+  margin-top: 24px;
+}
+.home-feed section h2 {
+  margin-bottom: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #dce4ef;
+}
+.home-card {
+  width: 190px;
+  flex-basis: 190px;
+}
+.home-poster-card > div:first-child {
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.home-poster-card > div:first-child img {
+  object-fit: cover;
+}
+.home-poster-card > div:last-child {
+  display: none;
+}
+.home-feed .row-scroll {
+  gap: 2px;
+}
+.home-feed .row-scroll > .home-card {
+  padding-right: 2px;
+}
+
 /* ── Home carousel rows: arrows replace the horizontal scrollbar ───────── */
 .row-scroll {
   scrollbar-width: none;

@@ -12,7 +12,7 @@ export default function PosterCard({ item, onClick, testid }) {
       data-testid={testid || 'card'}
       title={item.name}
       onClick={onClick}
-      className="w-full cursor-pointer group"
+      className={(item.landscape ? 'home-poster-card ' : '') + 'w-full cursor-pointer group'}
     >
       <div className="relative aspect-[2/3] rounded-xl overflow-hidden bg-hover border border-edge transition-transform duration-150 group-hover:scale-[1.04] group-hover:border-accent/60">
         {showImg ? (
