@@ -36,8 +36,18 @@ function Sidebar({ tab, onTab }) {
       data-testid="home-sidebar"
       className="w-[172px] shrink-0 flex flex-col gap-1 px-3 py-5 bg-raised border-r border-edge self-stretch"
     >
+      <div className="sidebar-brand">FLUX</div>
+      <div className="sidebar-section-label">MENU</div>
       {btn('feed', 'Home', <HomeIcon />)}
       {btn('watched', 'Watched', <EyeIcon />)}
+      <div className="sidebar-section-label sidebar-settings-label">SETTINGS</div>
+      <button className="sidebar-link" type="button">Change Plan</button>
+      <button className="sidebar-link" type="button">FAQ</button>
+      <button className="sidebar-link" type="button">Help Center</button>
+      <button className="sidebar-link" type="button">Terms of Use</button>
+      <button className="sidebar-link" type="button">Privacy</button>
+      <div className="sidebar-contact">Questions? Contact us.</div>
+      <div className="sidebar-version">FLUX v1.0</div>
     </aside>
   );
 }
